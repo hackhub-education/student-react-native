@@ -1,15 +1,21 @@
 import { SwitchNavigator, TabNavigator } from 'react-navigation';
 
 import Login from './account/login';
-import Home from './home/home';
 import Profile from './profile/profile';
+import Home from './home';
 
 const tabNavigation = TabNavigator({
-  Home: {
-    screen: Home
+  HomeTab: {
+    screen: Home,
+    navigationOptions: {
+      tabBarLabel: 'Home'
+    }
   },
-  Profile: {
-    screen: Profile
+  ProfileTab: {
+    screen: Profile,
+    navigationOptions: {
+      tabBarLabel: 'Profile'
+    }
   }
 });
 

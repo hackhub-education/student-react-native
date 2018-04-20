@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
-  Text,
-  Button
+  Text
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -14,17 +13,14 @@ const styles = StyleSheet.create({
   }
 });
 
-class Home extends Component {
+class Card extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Button
-          title="Home"
-          onPress={() => this.props.navigation.navigate('Card')}
-        />
+        <Text>Card</Text>
       </View>
     );
   }
 };
 
-export default Home;
+export default Card;
