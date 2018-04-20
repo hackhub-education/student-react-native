@@ -13,9 +13,12 @@ const styles = StyleSheet.create({
   }
 });
 
-const Login = () => (
+const Login = props => (
   <View style={styles.container}>
-    <Button title="Login" />
+    <Button
+      title="Login"
+      onPress={() => props.navigation.navigate('Home')}
+    />
   </View>
 );
 
