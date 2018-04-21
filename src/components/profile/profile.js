@@ -3,20 +3,14 @@ import {
   StyleSheet,
   View,
   Text,
-  Image,
-  Button
 } from 'react-native';
+import { Button, Icon, Avatar } from 'react-native-elements';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
-  },
-  avatar: {
-    width: 100,
-    height: 100,
-    borderRadius: 50
   },
   username: {
     fontSize: 16,
@@ -28,12 +22,20 @@ class Profile extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image
-          style={styles.avatar}
+        <Avatar
+          large
+          rounded
           source={require('./img/avatar.jpg')}
         />
         <Text style={styles.username}>WebDxD</Text>
         <Button
+          icon={
+            <Icon
+              name='exit-to-app'
+              color='white'
+            />
+          }
+          iconRight
           title="Logout"
           onPress={() => this.props.navigation.navigate('Login')}
         />

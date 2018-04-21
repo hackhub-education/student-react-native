@@ -1,4 +1,6 @@
+import React from 'react';
 import { SwitchNavigator, TabNavigator } from 'react-navigation';
+import { Icon } from 'react-native-elements';
 
 import Login from './account/login';
 import Profile from './profile/profile';
@@ -8,13 +10,25 @@ const tabNavigation = TabNavigator({
   HomeTab: {
     screen: Home,
     navigationOptions: {
-      tabBarLabel: 'Home'
+      tabBarLabel: 'Home',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon
+          name="home"
+          color={tintColor}
+        />
+      ),
     }
   },
   ProfileTab: {
     screen: Profile,
     navigationOptions: {
-      tabBarLabel: 'Profile'
+      tabBarLabel: 'Profile',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon
+          name="account-circle"
+          color={tintColor}
+        />
+      ),
     }
   }
 });
