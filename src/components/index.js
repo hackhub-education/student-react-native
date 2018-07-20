@@ -8,7 +8,8 @@ const tabNavigation = createBottomTabNavigator({
   HomeTab: {
     screen: Home,
     navigationOptions: {
-      tabBarLabel: 'Home'
+      tabBarLabel: 'Home',
+      // tabBarIcon: <Icon name="home" />
     }
   },
   ProfileTab: {
@@ -16,6 +17,16 @@ const tabNavigation = createBottomTabNavigator({
     navigationOptions: {
       tabBarLabel: 'Profile'
     }
+  }
+}, {
+  tabBarOptions: {
+    activeTintColor: 'red',
+    labelStyle: {
+      fontSize: 12,
+    },
+    style: {
+      backgroundColor: 'blue',
+    },
   }
 });
 
