@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
 
 class Home extends Component {
   render() {
-    console.log(this.props)
     return (
       <View style={styles.container}>
         <Text>Welcome, {this.props.navigation.getParam('username', '')} !</Text>
