@@ -19,15 +19,15 @@ const tabNavigation = createBottomTabNavigator({
     }
   }
 }, {
-  tabBarOptions: {
-    activeTintColor: 'red',
-    labelStyle: {
-      fontSize: 12,
-    },
-    style: {
-      backgroundColor: 'blue',
-    },
-  }
+  // tabBarOptions: {
+  //   activeTintColor: 'red',
+  //   labelStyle: {
+  //     fontSize: 12,
+  //   },
+  //   style: {
+  //     backgroundColor: 'blue',
+  //   },
+  // }
 });
 
 export default createSwitchNavigator({
