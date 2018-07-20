@@ -1,10 +1,10 @@
-import { SwitchNavigator, TabNavigator } from 'react-navigation';
+import { createSwitchNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import Login from './account/login';
 import Home from './home/home';
 import Profile from './profile/profile';
 
-const tabNavigation = TabNavigator({
+const tabNavigation = createBottomTabNavigator({
   Home: {
     screen: Home
   },
@@ -13,7 +13,7 @@ const tabNavigation = TabNavigator({
   }
 });
 
-export default SwitchNavigator({
+export default createSwitchNavigator({
   Login: {
     screen: Login
   },
