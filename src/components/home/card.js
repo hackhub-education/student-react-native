@@ -15,9 +15,12 @@ const styles = StyleSheet.create({
 
 class Card extends Component {
   render() {
+    const { name, email, phone } = this.props.navigation.state.params.data;
     return (
       <View style={styles.container}>
-        <Text>Card</Text>
+        <Text>{name}</Text>
+        <Text>{email}</Text>
+        <Text>{phone}</Text>
       </View>
     );
   }
