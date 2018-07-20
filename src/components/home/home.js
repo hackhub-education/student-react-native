@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
-  Text,
-  TextInput
 } from 'react-native';
-import { Button, Input } from 'react-native-elements';
+import { Button, Input, Text } from 'react-native-elements';
 
 const styles = StyleSheet.create({
   container: {
@@ -27,6 +25,7 @@ class Home extends Component {
 
     return (
       <View style={styles.container}>
+        <Text h4>Welcome, {this.props.navigation.getParam('username', '')} !</Text>
         <Input
           label="Name"
           placeholder="type name..."
