@@ -40,6 +40,7 @@ class Home extends Component {
 
     return (
       <View style={styles.container}>
+        <Text>Welcome, {this.props.navigation.getParam('username', '')} !</Text>
         <View style={styles.inputRow}>
           <Text>Name</Text>
           <TextInput
