@@ -23,7 +23,7 @@ class Profile extends Component {
     return (
       <View style={styles.container}>
         <Avatar
-          large
+          size="large"
           rounded
           source={require('./img/avatar.jpg')}
         />
