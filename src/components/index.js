@@ -1,14 +1,15 @@
-import { SwitchNavigator, TabNavigator } from 'react-navigation';
+import { createSwitchNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import Login from './account/login';
 import Profile from './profile/profile';
 import Home from './home';
 
-const tabNavigation = TabNavigator({
+const tabNavigation = createBottomTabNavigator({
   HomeTab: {
     screen: Home,
     navigationOptions: {
-      tabBarLabel: 'Home'
+      tabBarLabel: 'Home',
+      // tabBarIcon: <Icon name="home" />
     }
   },
   ProfileTab: {
@@ -17,9 +18,19 @@ const tabNavigation = TabNavigator({
       tabBarLabel: 'Profile'
     }
   }
+}, {
+  // tabBarOptions: {
+  //   activeTintColor: 'red',
+  //   labelStyle: {
+  //     fontSize: 12,
+  //   },
+  //   style: {
+  //     backgroundColor: 'blue',
+  //   },
+  // }
 });
 
-export default SwitchNavigator({
+export default createSwitchNavigator({
   Login: {
     screen: Login
   },

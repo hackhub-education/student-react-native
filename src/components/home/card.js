@@ -44,13 +44,13 @@ const styles = StyleSheet.create({
 
 class Card extends Component {
   render() {
-    const { data } = this.props.navigation.state.params;
+    const { name, email, phone } = this.props.navigation.getParam('data', {});
     return (
       <View style={styles.container}>
         <View style={styles.card}>
-          <Text style={styles.name}>{data.name}</Text>
-          <Text style={styles.email}>{data.email}</Text>
-          <Text style={styles.phone}>{data.phone}</Text>
+          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.email}>{email}</Text>
+          <Text style={styles.phone}>{phone}</Text>
           <Image
             style={styles.logo}
             source={require('./img/logo.png')}
