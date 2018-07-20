@@ -5,11 +5,28 @@ import Home from './home/home';
 import Profile from './profile/profile';
 
 const tabNavigation = createBottomTabNavigator({
-  Home: {
-    screen: Home
+  HomeTab: {
+    screen: Home,
+    navigationOptions: {
+      tabBarLabel: 'Home',
+      // tabBarIcon: <Icon name="home" />
+    }
   },
-  Profile: {
-    screen: Profile
+  ProfileTab: {
+    screen: Profile,
+    navigationOptions: {
+      tabBarLabel: 'Profile'
+    }
+  }
+}, {
+  tabBarOptions: {
+    activeTintColor: 'red',
+    labelStyle: {
+      fontSize: 12,
+    },
+    style: {
+      backgroundColor: 'blue',
+    },
   }
 });
 
