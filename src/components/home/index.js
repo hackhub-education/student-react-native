@@ -1,18 +1,35 @@
-import { StackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation';
 import Home from './home';
 import Card from './card';
 
-export default StackNavigator({
+export default createStackNavigator({
   Home: {
     screen: Home,
     navigationOptions: {
-      title: 'Home'
+      title: 'Home',
+      // headerBackTitle: null,
+      // headerStyle: {
+      //   backgroundColor: 'blue'
+      // },
+      // headerTitleStyle: {
+      //   color: 'red'
+      // },
+      // headerTransparent: true,
     }
   },
   Card: {
     screen: Card,
     navigationOptions: {
-      title: 'Card'
+      title: 'Card',
+      // headerBackTitleStyle: {
+      //   color: 'black'
+      // },
+      // headerTintColor: 'black'
+      // gesturesEnabled: false
     }
   }
+}, {
+  // mode: 'modal',
+  // headerMode: 'float',
+  // headerTransitionPreset: 'uikit'
 })
