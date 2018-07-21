@@ -3,7 +3,7 @@ import Home from './home';
 import Card from './card';
 
 export default createStackNavigator({
-  Home: {
+  HomeScreen: {
     screen: Home,
     navigationOptions: {
       title: 'Home',
@@ -17,7 +17,7 @@ export default createStackNavigator({
       // headerTransparent: true,
     }
   },
-  Card: {
+  CardScreen: {
     screen: Card,
     navigationOptions: {
       title: 'Card',

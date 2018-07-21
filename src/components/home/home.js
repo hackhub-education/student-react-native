@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
-  StyleSheet,
   View,
-  Text,
-  Button
+  StyleSheet,
+  Button,
+  Text
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -14,18 +14,14 @@ const styles = StyleSheet.create({
   }
 });
 
-class Home extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Welcome, {this.props.navigation.getParam('username', '')} !</Text>
-        <Button
-          title="Home"
-          onPress={() => this.props.navigation.navigate('Card')}
-        />
-      </View>
-    );
-  }
-};
+const Home = props => (
+  <View style={styles.container}>
+    <Text>Welcome, {props.navigation.getParam('username', '')} !</Text>
+    <Button
+      title="Go to Card"
+      onPress={() => props.navigation.navigate('CardScreen')}
+    />
+  </View>
+);
 
 export default Home;
