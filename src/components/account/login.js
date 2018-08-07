@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Button, TextInput, Text, Alert } from "react-native";
+import { StyleSheet, View, Button, TextInput, Text } from "react-native";
 import { withFormik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
 
 const styles = StyleSheet.create({
   container: {
@@ -25,18 +24,7 @@ const enhancer = withFormik({
     password: ""
   }),
   handleSubmit: (values, { props }) => {
-    axios({
-      method: "POST",
-      url: "https://tweet-api.webdxd.com/auth/login",
-      data: values
-    }).then(({ data }) => {
-      if (data.success) {
-        return props.navigation.navigate("Home", {
-          username: data.profile.username
-        });
-      }
-      return Alert.alert("Wrong username and password combination");
-    });
+    props.navigation.navigate('Home', { username: 'Michael' });
   }
 });
 
