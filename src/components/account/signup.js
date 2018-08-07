@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet, View, Button, TextInput, Text } from "react-native";
+import { StyleSheet, View, Button, TextInput, Text, Alert } from "react-native";
 import { withFormik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
 const styles = StyleSheet.create({
   container: {
@@ -13,29 +14,39 @@ const styles = StyleSheet.create({
 
 const enhancer = withFormik({
   validationSchema: Yup.object().shape({
-    email: Yup.string().email('Must be a valid email').required('Email is required !'),
+    username: Yup.string().required('username is required !'),
     password: Yup.string()
       .min(6, 'Please enter at least 6 digits')
       .max(32, 'Please enter less than 32 digits')
       .required('Password is required !')
   }),
   mapPropsToValues: () => ({
-    email: '',
+    username: '',
     password: ''
   }),
   handleSubmit: (values, { props }) => {
-    props.navigation.navigate("Home", { username: "Michael" })
+    axios({
+      method: 'POST',
+      url: 'https://tweet-api.webdxd.com/auth/signup',
+      data: values
+    })
+      .then(({ data }) => {
+        if (data.success) {
+          return props.navigation.navigate("Home", { username: data.profile.username })
+        }
+        return Alert.alert(data.error.message);
+      })
   }
 });
 
-const Signup = ({ values: { email, password }, navigation, handleChange, handleSubmit, errors }) => (
+const Signup = ({ values: { username, password }, navigation, handleChange, handleSubmit, errors }) => (
   <View style={styles.container}>
     <TextInput
-      placeholder="email"
-      value={email}
-      onChangeText={handleChange("email")}
+      placeholder="username"
+      value={username}
+      onChangeText={handleChange("username")}
     />
-    {errors.email && <Text>{errors.email}</Text>}
+    {errors.username && <Text>{errors.username}</Text>}
     <TextInput
       style={styles.inputField}
       placeholder="password"
