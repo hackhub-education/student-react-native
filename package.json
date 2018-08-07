@@ -7,9 +7,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.55",
+    "formik": "^1.0.2",
     "react": "16.3.1",
     "react-native": "0.55.3",
-    "react-navigation": "^2.8.0"
+    "react-navigation": "^2.8.0",
+    "yup": "^0.26.0"
   },
   "devDependencies": {
     "babel-jest": "22.4.3",
