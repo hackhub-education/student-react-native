@@ -28,7 +28,7 @@ const enhancer = withFormik({
   }
 });
 
-const Login = ({ values: { email, password }, navigation, handleChange, handleSubmit, errors }) => (
+const Signup = ({ values: { email, password }, navigation, handleChange, handleSubmit, errors }) => (
   <View style={styles.container}>
     <TextInput
       placeholder="email"
@@ -44,11 +44,11 @@ const Login = ({ values: { email, password }, navigation, handleChange, handleSu
     />
     {errors.password && <Text>{errors.password}</Text>}
     <Button
-      title="Login"
+      title="Signup"
       onPress={handleSubmit}
     />
-    <Text>Don't have account ? <Text onPress={() => navigation.navigate('Signup')}>Signup</Text></Text>
+    <Text>Already have account ? <Text onPress={() => navigation.navigate('Login')}>Login</Text></Text>
   </View>
 );
 
-export default enhancer(Login);
+export default enhancer(Signup);

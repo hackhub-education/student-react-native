@@ -1,6 +1,7 @@
 import { createSwitchNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import Login from './account/login';
+import Signup from './account/signup';
 import Profile from './profile/profile';
 import Home from './home';
 
@@ -33,6 +34,9 @@ const tabNavigation = createBottomTabNavigator({
 export default createSwitchNavigator({
   Login: {
     screen: Login
+  },
+  Signup: {
+    screen: Signup
   },
   Main: {
     screen: tabNavigation
