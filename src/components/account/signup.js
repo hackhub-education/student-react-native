@@ -3,6 +3,7 @@ import { StyleSheet, View, Button, TextInput, Text, Alert } from "react-native";
 import { withFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { dispatch } from '../../store';
 
 const styles = StyleSheet.create({
   container: {
@@ -32,6 +33,7 @@ const enhancer = withFormik({
     })
       .then(({ data }) => {
         if (data.success) {
+          dispatch.user.login(data);
           return props.navigation.navigate("Home", { username: data.profile.username })
         }
         return Alert.alert(data.error.message);

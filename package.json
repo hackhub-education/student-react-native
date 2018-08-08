@@ -9,12 +9,15 @@
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.55",
     "@rematch/core": "^1.0.0-beta.4",
+    "@rematch/persist": "^1.1.0",
     "axios": "^0.18.0",
     "formik": "^1.0.2",
     "react": "16.3.1",
     "react-native": "0.55.3",
     "react-navigation": "^2.8.0",
     "react-redux": "^5.0.7",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^5.10.0",
     "yup": "^0.26.0"
   },
   "devDependencies": {

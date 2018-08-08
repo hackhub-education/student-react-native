@@ -1,17 +1,13 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  Button
-} from 'react-native';
+import React, { Component } from "react";
+import { StyleSheet, View, Text, Image, Button } from "react-native";
+import { connect } from "react-redux";
+import { dispatch } from '../../store';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: "center",
+    justifyContent: "center"
   },
   avatar: {
     width: 100,
@@ -20,26 +16,24 @@ const styles = StyleSheet.create({
   },
   username: {
     fontSize: 16,
-    fontWeight: 'bold'
+    fontWeight: "bold"
   }
 });
 
-class Profile extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Image
-          style={styles.avatar}
-          source={require('./img/avatar.jpg')}
-        />
-        <Text style={styles.username}>WebDxD</Text>
-        <Button
-          title="Logout"
-          onPress={() => this.props.navigation.navigate('Login')}
-        />
-      </View>
-    );
-  }
-};
+const Profile = ({ navigation, user }) => (
+  <View style={styles.container}>
+    <Image style={styles.avatar} source={require("./img/avatar.jpg")} />
+    <Text style={styles.username}>{user.profile.username}</Text>
+    <Button
+      title="Logout"
+      onPress={() => {
+        dispatch.user.logout();
+        navigation.navigate("Login")
+      }}
+    />
+  </View>
+);
 
-export default Profile;
+const mapState = ({ user }) => ({ user });
+
+export default connect(mapState)(Profile);

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import { StyleSheet, View, Button, TextInput, Text, Alert } from "react-native";
 import { withFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { connect } from "react-redux";
+import { dispatch } from '../../store';
 
 const styles = StyleSheet.create({
   container: {
@@ -31,42 +33,60 @@ const enhancer = withFormik({
       data: values
     }).then(({ data }) => {
       if (data.success) {
-        return props.navigation.navigate("Home", {
-          username: data.profile.username
-        });
+        dispatch.user.login(data);
+        return props.navigation.navigate("Home", { username: data.profile.username });
       }
       return Alert.alert("Wrong username and password combination");
     });
   }
 });
 
-const Login = ({
-  values: { username, password },
-  navigation,
-  handleChange,
-  handleSubmit,
-  errors
-}) => (
-  <View style={styles.container}>
-    <TextInput
-      placeholder="username"
-      value={username}
-      onChangeText={handleChange("username")}
-    />
-    {errors.username && <Text>{errors.username}</Text>}
-    <TextInput
-      style={styles.inputField}
-      placeholder="password"
-      value={password}
-      onChangeText={handleChange("password")}
-    />
-    {errors.password && <Text>{errors.password}</Text>}
-    <Button title="Login" onPress={handleSubmit} />
-    <Text>
-      Don't have account ?{" "}
-      <Text onPress={() => navigation.navigate("Signup")}>Signup</Text>
-    </Text>
-  </View>
-);
+class Login extends Component {
+  async componentDidMount() {
+    const { user, navigation } = this.props;
 
-export default enhancer(Login);
+    if (user.token) {
+      await dispatch.user.fetchProfile();
+      navigation.navigate("Home", {
+        username: user.profile.username
+      });
+    }
+  }
+
+  render() {
+    const {
+      values: { username, password },
+      navigation,
+      handleChange,
+      handleSubmit,
+      errors
+    } = this.props;
+
+    return (
+      <View style={styles.container}>
+        <TextInput
+          placeholder="username"
+          value={username}
+          onChangeText={handleChange("username")}
+        />
+        {errors.username && <Text>{errors.username}</Text>}
+        <TextInput
+          style={styles.inputField}
+          placeholder="password"
+          value={password}
+          onChangeText={handleChange("password")}
+        />
+        {errors.password && <Text>{errors.password}</Text>}
+        <Button title="Login" onPress={handleSubmit} />
+        <Text>
+          Don't have account ?{" "}
+          <Text onPress={() => navigation.navigate("Signup")}>Signup</Text>
+        </Text>
+      </View>
+    );
+  }
+}
+
+const mapState = ({ user }) => ({ user });
+
+export default connect(mapState)(enhancer(Login));
